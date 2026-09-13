@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sulabh Sharma — DevSecOps Engineer | Cloud & Container Orchestration</title>
+<meta name="description" content="Portfolio of Sulabh Sharma — DevSecOps Engineer specializing in Azure, Kubernetes, Terraform and secure CI/CD pipelines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1115;
+    --surface:#181B22;
+    --surface-2:#1F232C;
+    --border:#2B303B;
+    --text:#EDEFF3;
+    --muted:#9AA1AE;
+    --accent:#7C9CFF;
+    --accent-2:#5FE3B3;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Poppins',sans-serif;
+    line-height:1.7;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  /* NAV */
+  nav{ position:sticky; top:0; z-index:30; background:rgba(15,17,21,0.85); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .logo{ font-weight:600; }
+  .logo span{ color:var(--accent); }
+  .navlinks{ display:flex; gap:26px; font-size:0.9rem; color:var(--muted); }
+  .navlinks a:hover{ color:var(--text); }
+
+  /* HERO */
+  .hero{ padding:80px 0 56px; text-align:center; }
+  .wave{ width:46px; margin-bottom:10px; }
+  .hero h1{ font-size:2.2rem; font-weight:700; margin-bottom:6px; }
+  .hero h2{ font-size:1.05rem; font-weight:500; color:var(--muted); margin-bottom:18px; }
+  .typing{ display:flex; justify-content:center; margin-bottom:30px; }
+  .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:10px;}
+  .btn{ padding:11px 22px; border-radius:8px; font-size:0.88rem; font-weight:500; border:1px solid var(--border); transition:.2s; }
+  .btn-primary{ background:var(--accent); color:#0F1115; border-color:var(--accent); }
+  .btn-primary:hover{ opacity:0.88; }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* CONTACT */
+  .contact{ padding:48px 0; border-top:1px solid var(--border); }
+  .contact-grid{ display:flex; gap:40px; flex-wrap:wrap; justify-content:center; margin-bottom:26px; }
+  .contact-item{ text-align:center; }
+  .contact-item .ic{ font-size:1.3rem; margin-bottom:4px; }
+  .contact-item .label{ font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .contact-item .val{ font-size:0.92rem; margin-top:2px; }
+  .contact-item a:hover{ color:var(--accent); }
+  .social-row{ display:flex; gap:18px; justify-content:center; }
+  .social-row a{
+    width:40px; height:40px; border-radius:50%; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; font-size:0.78rem; color:var(--muted);
+    transition:.2s;
+  }
+  .social-row a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+  /* SECTION GENERIC */
+  section{ padding:64px 0; border-top:1px solid var(--border); }
+  .section-title{ font-size:1.5rem; font-weight:600; margin-bottom:6px; }
+  .section-sub{ color:var(--muted); font-size:0.92rem; margin-bottom:36px; }
+
+  /* ABOUT */
+  .about p{ color:var(--muted); margin-bottom:16px; font-size:0.96rem; }
+  .about strong{ color:var(--text); }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:var(--border); }
+  .t-item{ position:relative; margin-bottom:36px; }
+  .t-item::before{
+    content:""; position:absolute; left:-28px; top:5px; width:12px; height:12px; border-radius:50%;
+    background:var(--accent-2); border:2px solid var(--bg); box-shadow:0 0 0 2px var(--border);
+  }
+  .t-date{ font-family:'Fira Code',monospace; font-size:0.76rem; color:var(--accent); margin-bottom:4px; }
+  .t-role{ font-size:1.05rem; font-weight:600; }
+  .t-org{ color:var(--muted); font-size:0.9rem; margin-bottom:10px; }
+  .t-item ul{ list-style:none; }
+  .t-item li{ position:relative; padding-left:18px; margin-bottom:7px; color:var(--muted); font-size:0.92rem; }
+  .t-item li::before{ content:"–"; position:absolute; left:0; color:var(--accent); }
+
+  /* SKILLS */
+  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+  .skill-cat h3{ font-size:0.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--accent-2); margin-bottom:14px; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{ font-size:0.8rem; padding:6px 12px; border:1px solid var(--border); border-radius:20px; color:var(--text); background:var(--surface); }
+
+  /* CERT/EDU */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
+  .card h3{ font-size:0.85rem; text-transform:uppercase; color:var(--muted); letter-spacing:.05em; margin-bottom:16px; }
+  .cert-item, .edu-item{ margin-bottom:14px; }
+  .cert-item .t, .edu-item .t{ font-weight:600; font-size:0.94rem; }
+  .cert-item .s, .edu-item .s{ font-size:0.82rem; color:var(--muted); }
+
+  footer{ padding:32px 0; text-align:center; color:var(--muted); font-size:0.82rem; border-top:1px solid var(--border); }
+
+  /* DECORATIVE STICKERS between sections */
+  .sticker-row{ display:flex; justify-content:center; gap:20px; padding:30px 0; }
+  .sticker-row img{ height:64px; width:auto; opacity:0.9; }
+
+  /* SCROLL REVEAL */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* HERO entrance */
+  .hero .wave{ animation:none; }
+  .hero h1, .hero h2, .typing, .cta-row{
+    opacity:0; transform:translateY(16px);
+    animation:fadeUp .7s ease forwards;
+  }
+  .hero h1{ animation-delay:.1s; }
+  .hero h2{ animation-delay:.25s; }
+  .typing{ animation-delay:.4s; }
+  .cta-row{ animation-delay:.55s; }
+  @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
+
+  /* HOVER LIFT on interactive bits */
+  .btn{ will-change:transform; }
+  .btn:hover{ transform:translateY(-3px); }
+  .tag{ transition:transform .18s ease, border-color .18s ease, background .18s ease; }
+  .tag:hover{ transform:translateY(-2px); border-color:var(--accent); background:var(--surface-2); }
+  .card{ transition:transform .25s ease, border-color .25s ease; }
+  .card:hover{ transform:translateY(-4px); border-color:var(--accent); }
+  .contact-item{ transition:transform .2s ease; }
+  .contact-item:hover{ transform:translateY(-3px); }
+  .t-item::before{ transition:transform .2s ease, box-shadow .2s ease; }
+  .t-item:hover::before{ transform:scale(1.3); box-shadow:0 0 0 4px var(--border), 0 0 10px var(--accent-2); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .hero h1, .hero h2, .typing, .cta-row{ opacity:1; transform:none; animation:none; }
+  }
+
+  @media (max-width:680px){
+    .navlinks{ display:none; }
+    .two-col{ grid-template-columns:1fr; }
+    .sticker-row img{ height:46px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Sulabh<span>.</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certifications</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="wave" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTkxcDRyNm9yemd6ZXVkdWlxb285anMzZ2hkaDg4NmV2MW0xMWM4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lGhBlBMIN2XsEteTN3/giphy.gif" alt="waving hand">
+    <h1>Hi, I'm Sulabh Sharma</h1>
+    <h2>DevSecOps Engineer | Cloud & Container Orchestration | CI/CD Automation</h2>
+    <div class="typing">
+      <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=520&center=true&vCenter=true&lines=Automate.+Secure.+Deploy.+Repeat." alt="typing animation">
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:sulabhsharma.devops@gmail.com">Get in touch</a>
+      <a class="btn btn-ghost" href="#experience">View experience</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/sulabh-sharma" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="ic">✉</div>
+        <div class="label">Email</div>
+        <div class="val"><a href="mailto:sulabhsharma.devops@gmail.com">sulabhsharma.devops@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ic">📞</div>
+        <div class="label">Phone</div>
+        <div class="val"><a href="tel:+918077275629">+91 80772 75629</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ic">📍</div>
+        <div class="label">Location</div>
+        <div class="val">India</div>
+      </div>
+    </div>
+    <div class="social-row">
+      <a href="https://linkedin.com/in/sulabh-sharma" target="_blank" rel="noopener" title="LinkedIn">in</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticker-row">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejhjNDcydXFuN3JiMnpoNGIzbnRjOHpid3ZzcDdpcGRvbGpsanJqNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/hiJ9ypGI5tIKdwKoK2/giphy.gif" alt="working style sticker" loading="lazy">
+</div>
+
+<section id="about" class="about reveal">
+  <div class="wrap">
+    <div class="section-title">About me</div>
+    <div class="section-sub">A bit about my background and how I work</div>
+    <p>I'm a <strong>DevSecOps Engineer</strong> with 4+ years of hands-on experience building secure, automated cloud solutions on Microsoft Azure. My work centers on Infrastructure as Code with Terraform, container orchestration with Docker and Kubernetes (AKS), and CI/CD pipelines built on Azure DevOps and GitHub Actions.</p>
+    <p>I embed security scanners — Tfsec, TFLint, TruffleHog, Super Linter, and Terratest — directly into the development lifecycle rather than treating them as an afterthought, which has meaningfully cut post-deployment security patches on the teams I've worked with. I've also led cloud transformation initiatives that improved deployment efficiency across enterprise environments.</p>
+    <p>Beyond the pipelines and clusters, I enjoy mentoring engineers on Terraform, Docker, and container security practices, and I'm currently exploring how GenAI tooling can speed up everyday DevOps automation work.</p>
+  </div>
+</section>
+
+<div class="sticker-row">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXkyN3AwOGJmYTg5cnJ3aDhiemZtaTg4c2M1MjBxNmQwOXFsZmRnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jt8mEC6Kffbwbv2tNH/giphy.gif" alt="working style sticker" loading="lazy">
+</div>
+
+<section id="experience" class="reveal">
+  <div class="wrap">
+    <div class="section-title">Experience</div>
+    <div class="section-sub">My journey across DevSecOps and platform engineering</div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-date">May 2023 – Present</div>
+        <div class="t-role">DevSecOps Engineer</div>
+        <div class="t-org">Tata Consultancy Services</div>
+        <ul>
+          <li>Designed secure CI/CD pipelines using Azure DevOps and GitHub Actions for enterprise-grade applications, accelerating release cycles.</li>
+          <li>Containerized legacy and microservice applications with Docker, deploying to Azure Kubernetes Service for consistent environments.</li>
+          <li>Implemented GitOps-based continuous delivery using ArgoCD for AKS workloads, enabling automated, auditable, rollback-ready deployments.</li>
+          <li>Embedded Tfsec, TFLint, TruffleHog, and Super Linter into CI/CD workflows to reduce post-deployment security patches.</li>
+          <li>Used OpenCost to monitor and optimize containerized workloads on AKS, reducing monthly cloud spend.</li>
+          <li>Owned the AKS migration end-to-end, mentoring junior engineers on Terraform, Docker, and container security.</li>
+          <li>Integrated GenAI capabilities into DevOps workflows to boost automation script generation speed.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <div class="t-date">Feb 2022 – May 2023</div>
+        <div class="t-role">DevOps Engineer — Platform Engineering & Application Support</div>
+        <div class="t-org">Tata Consultancy Services</div>
+        <ul>
+          <li>Built and maintained CI/CD pipelines using Jenkins, GitHub, and Maven, improving deployment speed and reducing failure rates.</li>
+          <li>Standardized deployment environments across Dev, QA, Staging, and Prod using reusable Terraform scripts, reducing infrastructure drift.</li>
+          <li>Reinforced JBoss clusters supporting mission-critical services, guaranteeing high uptime while reducing response latency.</li>
+          <li>Configured monitoring and alerting using Prometheus and Grafana, reducing incident response time.</li>
+          <li>Built REST APIs in Spring Boot, improving system scalability and reducing response latency.</li>
+          <li>Served as primary point of contact for release coordination across Dev, QA, Staging, and Prod environments.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <div class="t-date">2017 – 2020</div>
+        <div class="t-role">Master of Computer Applications (MCA)</div>
+        <div class="t-org">MJP Rohilkhand University, Bareilly</div>
+      </div>
+      <div class="t-item">
+        <div class="t-date">2014 – 2017</div>
+        <div class="t-role">Bachelor of Science</div>
+        <div class="t-org">Khandelwal College of Management Science and Technology, Bareilly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="wrap">
+    <div class="section-title">Skills & Expertise</div>
+    <div class="section-sub">The tools and practices I use to build secure, automated infrastructure</div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Cloud Platforms</h3>
+        <div class="tag-row">
+          <span class="tag">Microsoft Azure</span><span class="tag">App Services</span>
+          <span class="tag">Virtual Machines</span><span class="tag">AKS</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Containers & Orchestration</h3>
+        <div class="tag-row">
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span>
+          <span class="tag">Helm</span><span class="tag">ArgoCD</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>IaC & CI/CD</h3>
+        <div class="tag-row">
+          <span class="tag">Terraform</span><span class="tag">Azure DevOps</span>
+          <span class="tag">GitHub Actions</span><span class="tag">Jenkins</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>DevSecOps & Security</h3>
+        <div class="tag-row">
+          <span class="tag">Tfsec</span><span class="tag">TruffleHog</span><span class="tag">TFLint</span>
+          <span class="tag">Super Linter</span><span class="tag">Terratest</span><span class="tag">OpenCost</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Monitoring & Observability</h3>
+        <div class="tag-row">
+          <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Scripting & Languages</h3>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">Java</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sticker-row">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTkxcDRyNm9yemd6ZXVkdWlxb285anMzZ2hkaDg4NmV2MW0xMWM4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lGhBlBMIN2XsEteTN3/giphy.gif" alt="working style sticker" loading="lazy">
+</div>
+
+<section id="certs" class="reveal">
+  <div class="wrap">
+    <div class="section-title">Certifications & Education</div>
+    <div class="section-sub">Credentials backing the work above</div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Certifications</h3>
+        <div class="cert-item">
+          <div class="t">Microsoft Certified: DevOps Engineer Expert</div>
+          <div class="s">Designing and Implementing Microsoft DevOps Solutions (AZ-400)</div>
+        </div>
+        <div class="cert-item">
+          <div class="t">Google Associate Cloud Engineer</div>
+          <div class="s">Valid until June 2026</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Education</h3>
+        <div class="edu-item">
+          <div class="t">Master of Computer Applications (MCA)</div>
+          <div class="s">MJP Rohilkhand University, Bareilly · 2017–2020</div>
+        </div>
+        <div class="edu-item">
+          <div class="t">Bachelor of Science</div>
+          <div class="s">Khandelwal College of Management Science and Technology, Bareilly · 2014–2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Sulabh Sharma · Built with care, deployed with confidence.
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
